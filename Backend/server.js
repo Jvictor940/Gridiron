@@ -3,7 +3,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const athlete = require('./routes/athlete');
 const user = require('./routes/user')
-const logger = require('./middlewares/logger')
+const logger = require('./middlewares/logger');
+const errorHandler = require('./middlewares/error');
 
 
 dotenv.config({ path: './config/config.env' })
@@ -14,6 +15,7 @@ const app = express();
 app.use(bodyParser.json())
 
 app.use(logger)
+app.use(errorHandler)
 app.use('/athlete', athlete)
 app.use('/user', user)
 
