@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const athlete = require('./routes/athlete');
 const user = require('./routes/user')
+const logger = require('./middlewares/logger')
 
 
 dotenv.config({ path: './config/config.env' })
@@ -12,6 +13,7 @@ const app = express();
 // parse application/json
 app.use(bodyParser.json())
 
+app.use(logger)
 app.use('/athlete', athlete)
 app.use('/user', user)
 
