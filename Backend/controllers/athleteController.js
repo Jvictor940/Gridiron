@@ -4,6 +4,8 @@ const getAthletes = (req, res, next) => {
     // query parameter 
     if (Object.keys(req.query).length) {
         const {
+            firstName,
+            lastName,
             gender, 
             age, 
             grade, 
@@ -16,6 +18,8 @@ const getAthletes = (req, res, next) => {
         } = req.query 
         const filter = [];
 
+        if (firstName) filter.push(firstName)
+        if (lastName) filter.push(lastName)
         if (gender) filter.push(gender)
         if (age) filter.push(age)
         if (grade) filter.push(grade)
