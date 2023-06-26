@@ -1,3 +1,4 @@
+// Root Methods 
 // For '/user' endpoints
 
 const getUsers = (req, res, next) => {
@@ -44,6 +45,7 @@ const deleteUsers = (req, res, next) => {
     .json({ message: 'Deleted All Users!'})
 }
 
+//Param Methods 
 // For '/athlete/:athleteId'
 const getUser = (req, res, next) => {
     res 

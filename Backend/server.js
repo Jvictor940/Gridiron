@@ -23,8 +23,8 @@ app.use('/athlete', athlete)
 app.use('/user', user)
 
 // Reads from our config.env file || fallback if it can't read our file 
-const PORT = process.env.PORT || 5001
+// const PORT = process.env.PORT || 5001
 
-const server = app.listen(PORT, () => {
-    console.log(`Server is listening on PORT: ${PORT}`)
-})
+// const server = app.listen(PORT, () => {
+//     console.log(`Server is listening on PORT: ${PORT}`)
+// })

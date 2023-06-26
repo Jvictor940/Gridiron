@@ -66,4 +66,4 @@ const AthleteSchema = new Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('Athlete', AthleteSchema)
+module.exports = mongoose.model('Athlete', AthleteSchema);

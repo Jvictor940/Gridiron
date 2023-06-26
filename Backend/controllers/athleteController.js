@@ -1,6 +1,8 @@
-// For '/athlete' endpoints
+const Athlete = require('../models/Athlete')
 
-const getAthletes = (req, res, next) => {
+// Root Methods 
+// For '/athlete' endpoints
+const getAthletes = async (req, res, next) => {
     // query parameter 
     if (Object.keys(req.query).length) {
         const {
@@ -35,28 +37,48 @@ const getAthletes = (req, res, next) => {
         }
     }
 
-    res
-    .status(200)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: 'Got All Athletes!'})
+    try {
+        const athletes = await Athlete.find()
+
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(athletes)
+    } catch (err) {
+        next(err)
+    }
 }
 
-const createAthlete = (req, res, next) => {
-    res
-    .status(200)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: `Created an athlete by the name of ${req.body.athleteName}!`})
+const createAthlete = async (req, res, next) => {
+    try {
+        const athlete = await Athlete.create(req.body)
+        
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(athlete) 
+    } catch (err) {
+        next(err)
+    }
+
 }
 
-const deleteAthletes = (req, res, next) => {
-    res
-    .status(200)
-    .setHeader('Content-Type', 'application/json')
-    .json({ message: 'Deleted All Athletes!'})
+const deleteAthletes = async (req, res, next) => {
+    try {
+        const athlete = await Athlete.deleteMany()
+        
+        res
+        .status(200)
+        .setHeader('Content-Type', 'application/json')
+        .json(athlete)
+    } catch (err) {
+        next(err)
+    }
+
 }
 
+//Param Methods 
 // For '/athlete/:athleteId'
-
 const getAthlete = (req, res, next) => {
     res
     .status(200)
